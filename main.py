@@ -24,6 +24,15 @@ db: List[User] = [
         )
 ]
 
+@app.get("/")
+async def root():
+    return {"Welcome to the": "Patient Portal"}
+
+@app.get("/api/v1/users")
+async def fetch_users():
+    return db;
+#here is where I return the entire database
+
 #@app.get("/reports")
 #def reports():
   #  return{"Data": "Test"}
