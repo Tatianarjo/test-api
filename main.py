@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Path
-from uuid import uuid4
+from uuid import UUID
 from typing import List
 from models import User, Role, Gender
 
@@ -7,7 +7,7 @@ app = FastAPI()
 
 db: List[User] = [
     User(
-        id=uuid4(), 
+        id=UUID("d18d6cf9-3d79-43cb-87a9-17b5d247d764"), 
         first_name= "Peaches",
         last_name="Baldeaches",
         date_of_birth="October 17, 1934",
@@ -15,7 +15,7 @@ db: List[User] = [
         roles=[Role.user]
         ),
     User(
-        id=uuid4(), 
+        id=UUID("2f6a369a-ec64-4319-9f5b-ab0e0ab0b0f3"), 
         first_name= "George",
         last_name="Pineapple",
         date_of_birth="March 17, 2023",
@@ -31,33 +31,14 @@ async def root():
 @app.get("/api/v1/users")
 async def fetch_users():
     return db;
-#here is where I return the entire database
 
-#@app.get("/reports")
-#def reports():
-  #  return{"Data": "Test"}
+@app.post("/api/v1/users")
+async def register_user(user: User):
+    db.append(user)
+    return {"id": user.id}
 
-#@app.get("/labreports")
-#def labreports():
-   # return{}
-
-"""patient = {
-    1: {
-        "name": "Peaches",
-        "lastName": "Deaches",
-        "Date of Birth": "April 17, 2023",
-        "Gender":"Female"
-    }
-},"""
+#here is where I return the entire database with the addition of a new user and their id
 
 
-"""@app.get("/get-patient/{patient_id}")
-def get_patient(patient_id: int = Path(description="The ID of the patient you would like to view")):
-    return patient[patient_id]"""
 
-"""@app.get("/get-by-name")
-def get_patient(name: str):
-    for patient_id in patient:
-        if patient[patient_id]["name"] == name:
-            return patient[patient_id]
-        return{"Data": "Not Found"}"""
+
