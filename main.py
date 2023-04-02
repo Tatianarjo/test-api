@@ -1,7 +1,7 @@
-from fastapi import FastAPI, Path
+from fastapi import FastAPI, HTTPException
 from uuid import UUID
 from typing import List
-from models import User, Role, Gender
+from models import User, Role, Gender, UserUpdateRequest, UserResponse
 
 app = FastAPI()
 
@@ -43,6 +43,53 @@ async def delete_user(user_id: UUID):
         if user.id == user_id:
             db.remove(user)
             return
+    raise HTTPException(
+        status_code=404,
+        detail=f"user with id: {user_id} does not exist"
+    )
+"""@app.put("/api/v1/users/{user_id}")
+async def update_user(user_update: UserUpdateRequest, user_id: UUID):
+    for user in db:
+        if user.id == user_id:
+            
+            if user_update.first_name !=None:
+                user[user_id].first_name = user_update.first_name
+            if user_update.last_name != None:
+                user[user_id].last_name = user_update.last_name
+            if user_update.date_of_birth != None:
+                user[user_id].date_of_birth = user_update.date_of_birth
+            if user_update.roles != None:
+                user[user_id].roles = user_update.roles
+            return
+        raise HTTPException(
+            status_code=404,
+            detail=f"user with id: {user_id} does not exist"
+        )"""
+
+@app.put("/api/v1/users/{user_id}", response_model=UserResponse)
+async def update_user(user_id: UUID, user_update: UserUpdateRequest):
+    try:
+        user = next(user for user in db if user.id == user_id)
+    except StopIteration:
+        raise HTTPException(
+            status_code=404,
+            detail=f"user with id: {user_id} does not exist"
+        )
+
+    if user_update.first_name:
+        user.first_name = user_update.first_name
+    if user_update.last_name:
+        user.last_name = user_update.last_name
+    if user_update.date_of_birth:
+        user.date_of_birth = user_update.date_of_birth
+    if user_update.roles:
+        user.roles = user_update.roles
+
+    return UserResponse(**user.dict())
+
+        
+
+     
 
 #here is where I return the entire database with the addition of a new user and their id
 
