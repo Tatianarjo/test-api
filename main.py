@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from uuid import UUID
-from typing import List
+from typing import List, Optional
 from models import User, Role, Gender, UserUpdateRequest, UserResponse
 
 app = FastAPI()
@@ -42,6 +42,7 @@ db: List[User] = [
         type_of_test= "Glucose",
         result= "Postive",
         time_of_test= "3PM"
+   
     ),
     User(
         id=UUID("2f6a369a-ec64-4319-9f5b-ab0e0ab0b0f3"), 
@@ -76,6 +77,28 @@ async def root():
 @app.get("/api/v1/users")
 async def fetch_users():
     return db;
+
+@app.get("/api/v1/users/test{test_type}")
+async def get_user_by_test(test_type: str):
+    users_info = []
+    for user in db:
+        if user.type_of_test == test_type:
+            user_info = {
+                "id": user.id,
+                 "first_name": user.first_name,
+                "last_name": user.last_name,
+                "date_of_birth": user.date_of_birth,
+                "gender": user.gender,
+                "roles": user.roles,
+                "type_of_test": user.type_of_test,
+                "result": user.result,
+                "time_of_test": user.time_of_test
+            }
+            users_info.append(user_info)
+    if not users_info:
+        raise HTTPException(status_code=404, detail=f"No users found with test type: {test_type}")
+    return users_info
+            
 
 @app.post("/api/v1/users")
 async def register_user(user: User):
