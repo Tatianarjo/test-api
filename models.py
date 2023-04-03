@@ -22,6 +22,7 @@ class User(BaseModel):
     type_of_test: str
     result: str
     time_of_test: str
+   ## time_entered: datetime= datetime.now()
 
 class UserResponse(User):
     updated_at: datetime=datetime.now()
@@ -36,6 +37,12 @@ class UserUpdateRequest(BaseModel):
     type_of_test: Optional [str]
     result: Optional [str]
     time_of_test: Optional [str]
+   # time_entered: datetime = datetime.now()
+    
+ #   def __init__(self, **data):
+     #   super().__init__(**data)
+      #  self.time_entered = datetime.now() 
+
     
 """class LabReport:
     type_of_test: str
