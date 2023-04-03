@@ -1,0 +1,60 @@
+
+# Patient Lab Reports API
+
+This lab report API allows you to view, modify, delete, and register patients and their lab reports. You can use this API to manage patient data in a secure and efficient way.
+
+## Tech Stack
+
+
+**Server:** Python, FastAPI, Uvicorn
+
+
+## Features
+
+- Create lab reports
+- Read lab reports
+- Modify lab reports
+- Delete lab reports
+- Create patients
+- Read patients
+- Modify patients
+- Delete patients
+- Show all patients that have had a certain type of lab report
+
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/Tatianarjo/test-api
+```
+
+Go to the project directory
+
+```bash
+  cd test-api
+```
+
+Install dependencies
+
+```bash
+  pip3 install uvicorn
+  pip3 install fastapi
+```
+
+Start the server
+
+```bash
+  pipenv run uvicorn main:app --reload 
+```
+
+
+## Screenshots
+
+![App Screenshot](https://lh3.googleusercontent.com/z3KZIlLJbZznAsVHevH4SOsEC-rmMtkv4KMgsmYF10ARbpgTHikdVI6olOVB50Rpy1RSx793qnZJGPcodFRESYnYMSepzbqnN7SmOaNG6uZtPOjH8xJIiEVK1-SDh87E1jYTfnZg3Y9R_bzAMO7pMe2VZaq-cUatjAMngO0Ayf-xFBt4G37eTa8rOthCniWNwWeqjUwIpBDVcIMfiVz7tRJL3sOQDFd0HzIbN_lWRsggOVo0A56d5ME-vzvSq0lhmOlh3aS5M-cz106LneBL_cB-xjqHc8ML_oi-lHbkmLHujKDw8b_3ONr-Y2DAI3ehR-LG6bcct50PTLHzpPsVZlwa-iiN1_hN6IiYpVwxgmqc02tAFbfy4mPHLY9oPrsxeBLhrSwEfLjrZYQ4e7HUxPO7BXnsYbnOeQHjC6xAJRg-ioUVoUVFL0Npq_IX2XoXmjZHsz-2CS8AHMUElh7AHCciSH0pEv6e3XPTiVdGDhjP96gJJ_8CCYOznG4gH0uWr04ruSt9GVizIQvHNkkCaFCN2YwaFGmCGPWcz-vZ-L4LhEFtC9v6oeDvWK4-ih6X1brc6Blknq0489V7qdOwbOlZLhBp8YXDx8X6qW989A1kwH96-bY8FJC4X6210CnnqP-dYDDIcIFOzkjt2hgu5wX0iIH_DW9xoqalGU3oFpfY0sUbhxRDREk5TCTx2hOZxzerQmJ93wHMOmEphrfVn30D4Ydi-h6BVBXzcsmqU7nYeal7oXjAHZfLd_9vP8swctj6R8Q9yqKC7i-qxXZWLZUNnVOikkGTADgcnmJULqtIh6sU40ZLbcu8im2Y9VTCDn0eSg0oTLvLaL2OmiDgNYGwd_gdg9VY47Zyih-H4JCc7Ib4n01jy2eLLEhQpUgh2afiSU9l_oiuEoZalrMHePJzFzPZaMpeWsNUJZEmTAOLt-iQZawEytHbyv6kwremGhHcMmkkJmJ4p-kxrvmTV480vApw79PtCUD5vmaII1EH4PUwd_CDy3AUUJwYD_EnwmuiAB3YTJANLXGEFuasxMDD8TY=w827-h497-s-no?authuser=0)
+
+![App Screenshot](https://lh3.googleusercontent.com/8nzyrykOuIFiUHU16M_tb18s9G4r0T3IYOE2Vd-lMFTdqRDiFmFfkTvk0sVXh6jGDJPuXmKJNYHHrO3lhwSSfdYhzVQpLz8Ze2lJDi2uzDwA6XqBMUw1wzgr61vevIKttsTh1DsagdAcVaDKyfALYCnMgSMI_QSr4T0eL6VQbKiX_1cFJ9nnHXeRUIY0Vp7miPsdQtWoZVkY-4P1zuCgDn4yXneuMOLZ409abvj2px9hZDRPksfgZjt39yGsJbU_ib1glNf7CeGvA3x09jKjIQBCaA8PSmzLpBXSVqqhL5cCpcihL2UXc_M4OafEE0iiSrZvV-s7FwP_UTX8tvni7AOUG0CCAWCW1j6A9yzF0L9NXRTTYVL0TQ47CM8jAMbpXOKyNuFPNC5CJPNZIYL5VjbBgntYUuhhlj4wzmPsGWqIUvidPINzvXsWbcugehLgu4KpDw14yM7gJp_1QLtQ7ogybZyLtW6A5R4ppJ0XVqoastjs7qtkkTmEaJlyDsflvLKuBGW5Smt_6SXzU1j06Dxim5RBc_nm9QwheC8bhG1Im0dGRCimzF5mWaGoRLN64VmMFHIZEY0l0XNOwyxXCse0beO2y_8I4JT-wFCZxScUYB5wnmssIIdymbM8rdaGDwkyi5VmsVQRTWQ7fkjAJOhOz6mS4jzLkodO14lJTEehbft13ftadd4Kydbl9OoggNjZwKoZb3fc5OjA995_lSH23Gb2WMr_jssdhMJ3GbkzfmNwv4YP_fTo7oZt2Och_NJYoyea-eB4gzb8FNKXxhgc1PX22rie7TPE_mgtfBCcqVkB1tg-S01qPQG6KfZS-0F6ZfmZEj7qf0JKLq4hcHvuAL3VfdTA90WOSdWf3s7XMT9cPYAFp6cmfkj_S2JyqepKZxOsA1Uqvt0Cay-OwSYXWBovWeSxwG1iUQEyHc09t0zOiExcbIIODb_mPlPzWr3v5OBn7CdaqW8u8-6SVp0q_SAXVsz64VOgPLXGnIKSBulTpMJcPSHuV6qbUKCQVuV6Dly9CDUlMBEWxOHKjjb9EjM=w1653-h582-s-no?authuser=0)
+
+
+
