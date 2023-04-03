@@ -19,6 +19,9 @@ class User(BaseModel):
     date_of_birth: str
     gender: Gender
     roles: List[Role]
+    type_of_test: str
+    result: str
+    time_of_test: str
 
 class UserResponse(User):
     updated_at: datetime=datetime.now()
@@ -30,10 +33,13 @@ class UserUpdateRequest(BaseModel):
     last_name: Optional [str]
     date_of_birth: Optional[str]
     roles: Optional[List[Role]]
+    type_of_test: Optional [str]
+    result: Optional [str]
+    time_of_test: Optional [str]
     
-"""class UserUpdateRequest(BaseModel):
-    first_name: Optional[str] = None
-    last_name: Optional [str] = None
-    date_of_birth: Optional[str] = None
-    roles: Optional[List[Role]] = None"""
+"""class LabReport:
+    type_of_test: str
+    result: bool
+    time_of_test: datetime.now
+    time_entered: str"""
     
