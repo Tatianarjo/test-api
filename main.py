@@ -5,14 +5,17 @@ from models import User, Role, Gender, UserUpdateRequest, UserResponse
 
 app = FastAPI()
 
-db: List[User] = [
+"""db: List[User] = [
     User(
         id=UUID("d18d6cf9-3d79-43cb-87a9-17b5d247d764"), 
         first_name= "Peaches",
         last_name="Baldeaches",
         date_of_birth="October 17, 1934",
         gender=Gender.female,
-        roles=[Role.user]
+        roles=[Role.user],
+        type_of_test= "Glucose",
+        result= "Postive",
+        time_of_test= "3PM"
         ),
     User(
         id=UUID("2f6a369a-ec64-4319-9f5b-ab0e0ab0b0f3"), 
@@ -20,9 +23,51 @@ db: List[User] = [
         last_name="Pineapple",
         date_of_birth="March 17, 2023",
         gender=Gender.male,
-        roles=[Role.admin, Role.user]
-        )
+        roles=[Role.admin, Role.user],
+        type_of_test="Blood Test",
+        result= "Negative",
+        time_of_test= "4PM"
+        ),
+    
+],"""
+
+db: List[User] = [
+    User(
+        id=UUID("d18d6cf9-3d79-43cb-87a9-17b5d247d764"), 
+        first_name= "Peaches",
+        last_name="Baldeaches",
+        date_of_birth="October 17, 1934",
+        gender=Gender.female,
+        roles=[Role.user],
+        type_of_test= "Glucose",
+        result= "Postive",
+        time_of_test= "3PM"
+    ),
+    User(
+        id=UUID("2f6a369a-ec64-4319-9f5b-ab0e0ab0b0f3"), 
+        first_name= "George",
+        last_name="Pineapple",
+        date_of_birth="March 17, 2023",
+        gender=Gender.male,
+        roles=[Role.admin, Role.user],
+        type_of_test="Blood Test",
+        result= "Negative",
+        time_of_test= "4PM"
+    ),
+    User(
+        id=UUID("3a84f00b-71f9-4d2a-8c04-53aef917bb48"), 
+        first_name= "Jane",
+        last_name="Doe",
+        date_of_birth="January 1, 1980",
+        gender=Gender.female,
+        roles=[Role.user],
+        type_of_test="Lab Report",
+        result= "Pending",
+        time_of_test= ""
+    ),
 ]
+
+
 
 @app.get("/")
 async def root():
@@ -36,6 +81,7 @@ async def fetch_users():
 async def register_user(user: User):
     db.append(user)
     return {"id": user.id}
+
 
 @app.delete("/api/v1/users/{user_id}")
 async def delete_user(user_id: UUID):
@@ -84,6 +130,14 @@ async def update_user(user_id: UUID, user_update: UserUpdateRequest):
         user.date_of_birth = user_update.date_of_birth
     if user_update.roles:
         user.roles = user_update.roles
+    if user_update.type_of_test:
+        user.type_of_test = user_update.type_of_test
+    if user_update.result:
+        user.result = user_update.result
+    if user_update.time_of_test:
+        user.time_of_test = user_update.time_of_test
+    
+    
 
     return UserResponse(**user.dict())
 
